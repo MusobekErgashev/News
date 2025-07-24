@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 24px 10px;
+    gap: 1rem;
+}
+
+a {
+    padding: 7px 12px;
+}
+
+.pages {
+    font-size: 14px;
+    font-weight: 600;
+    color: #515151;
+}
