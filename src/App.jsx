@@ -1,15 +1,16 @@
-import Search from './components/search/Search'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import contentStyles from "./components/content/content.module.css"
 import headerStyles from "./components/header/header.module.css"
 import footerStyles from "./components/footer/footer.module.css"
 import leftArrow from "./assets/left-arrow.png"
 import rightArrow from "./assets/right-arrow.png"
+import searchStyles from "./components/search/search.module.css"
 
 const App = () => {
   const [articles, setArticles] = useState([]);
   const [changeQuery, setChangeQuery] = useState("tesla")
-  const [page, setPage] = useState(1); // bu endi holat
+  const [page, setPage] = useState(1);
+  const searchInpt = useRef()
 
   let limit = 12;
 
@@ -79,6 +80,13 @@ const App = () => {
     },
   ]
 
+  function searchSubmit (e) {
+    e.preventDefault()
+
+    setChangeQuery(searchInpt.current.value)
+    searchInpt.current.value = ""
+  }
+
   return (
     <div className='container'>
       <div className={headerStyles.main_header}>
@@ -93,7 +101,11 @@ const App = () => {
         </div>
       </div>
 
-      <Search />
+      <div className={searchStyles.main_search}>
+        <form onSubmit={searchSubmit}>
+          <input type="text" className={searchStyles.search_input} ref={searchInpt} placeholder='Search here...' />
+        </form>
+      </div>
 
       <div className={contentStyles.main_content}>
         <div className={contentStyles.content}>
@@ -108,7 +120,7 @@ const App = () => {
                   </div>
 
                   <div className={contentStyles.title_part}>
-                    <h4>{item.title}</h4>
+                    <h4>{item.title?.length >= 70 ? item.title.slice(0, 70) + "..." : item.title}</h4>
 
                     <div className={contentStyles.publish}>
                       <p className={contentStyles.published_by}>{item.author?.length > 15 || !item.author?.length ? "Unknown" : item.author}</p>
