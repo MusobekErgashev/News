@@ -1,18 +1,18 @@
-import React from 'react'
 import styles from "./header.module.css"
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
     <div className={styles.main_header}>
       <div className={styles.header}>
-        <a href="#" className={styles.links}>Home</a>
-        <a href="#" className={styles.links}>Business</a>
-        <a href="#" className={styles.links}>Entertainment</a>
-        <a href="#" className={styles.links}>General</a>
-        <a href="#" className={styles.links}>Health</a>
-        <a href="#" className={styles.links}>Science</a>
-        <a href="#" className={styles.links}>Sports</a>
-        <a href="#" className={styles.links}>Technology</a>
+        <p className={styles.links}>Home</p>
+        <p className={styles.links}>Business</p>
+        <p className={styles.links}>Entertainment</p>
+        <p className={styles.links}>General</p>
+        <p className={styles.links}>Health</p>
+        <p className={styles.links}>Science</p>
+        <p className={styles.links}>Sports</p>
+        <p className={styles.links}>Technology</p>
       </div>
     </div>
   )
